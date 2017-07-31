@@ -1,6 +1,6 @@
 # Now Playing Widget
 
-![beartooth](http://i.imgur.com/V0o6Nap.jpg =200x200)
+![beartooth](http://i.imgur.com/nwb3squ.jpg)
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/dustinblackman/nowplaying-widget) [![Deploy to Docker Cloud](https://files.cloud.docker.com/images/deploy-to-dockercloud.svg)](https://cloud.docker.com/stack/deploy/?repo=https://github.com/dustinblackman/nowplaying-widget)
 
