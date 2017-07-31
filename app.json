@@ -1,0 +1,41 @@
+{
+  "name": "NowPlaying-Widget",
+  "description": "A Spotify Now Playing widget that's accessable with anything that can render a webpage",
+  "repository": "https://github.com/dustinblackman/nowplaying-widget",
+  "keywords": ["spotify", "music", "track", "nowplaying", "widget"],
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    }
+  ],
+  "addons": [
+    "logentries",
+    "librato"
+  ],
+  "env": {
+    "SPOTIFY_CLIENT_ID": {
+      "description": "Spotify client ID from the app page",
+      "value": ""
+    },
+    "SPOTIFY_CLIENT_SECRET": {
+      "description": "Spotify client secret from the app page",
+      "value": ""
+    },
+    "HOST": {
+      "description": "Host name, e.g https://yourapp.herokuapp.com",
+      "value": ""
+    },
+    "NODE_ENV": {
+      "description": "Nodejs environment",
+      "value": "production"
+    },
+    "NPM_CONFIG_PRODUCTION": {
+      "description": "npm config for installing deps",
+      "value": "false"
+    },
+    "YARN_CONFIG_PRODUCTION": {
+      "description": "yarn config for installing deps",
+      "value": "false"
+    }
+  }
+}

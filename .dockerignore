@@ -1,0 +1,8 @@
+.env/
+dist/
+node_modules/
+stratch/
+server/config/local.ts
+test/
+test.js
+tmp/

@@ -1,0 +1,8 @@
+*.log
+
+.env
+dist/
+scratch/
+node_modules/
+**/local.js
+**/local.ts

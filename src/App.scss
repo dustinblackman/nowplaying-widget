@@ -1,0 +1,79 @@
+$size: 500px;
+$font-size: 1.4rem;
+
+p {
+  margin: 0;
+}
+
+.nowplaying {
+  position: relative;
+  width: $size;
+  height: $size;
+  overflow: hidden;
+}
+
+.display {
+  padding: 0;
+}
+
+.art {
+  width: $size;
+  height: $size;
+  z-index: 1;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.coverart {
+  width: $size;
+  height: $size;
+  z-index: 2;
+  background-image:
+    -webkit-gradient(
+      linear,
+      left top,
+      left bottom,
+      from(rgba(0, 0, 0, 0)),
+      to(rgba(0, 0, 0, 1)),
+      color-stop(0.5, rgba(0, 0, 0, 0.3)),
+      color-stop(0.6, rgba(0, 0, 0, 0.6)),
+      color-stop(0.9, rgba(0, 0, 0, 0.9))
+    );
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.text {
+  position: absolute;
+  font-family: Droid Sans, Helvetica Neue, Helvetica, Arial;
+  z-index: 3;
+  left: 0;
+  bottom: 0;
+  padding: 0.8em;
+  line-height: $font-size + 0.1rem;
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+}
+
+.artist,
+.album {
+  font-size: $font-size;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: rgba(255, 255, 255, 0.8);
+  width: $size - 20px;
+}
+
+.album {
+  font-size: $font-size - 0.1rem;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.track {
+  font-weight: 700;
+  padding-right: 20px;
+  margin: 0.2rem 0 0;
+  line-height: 1.1em;
+  color: white;
+}

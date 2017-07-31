@@ -1,0 +1,23 @@
+{
+  "extends": ["tslint-config-semistandard", "tslint-react"],
+  "rulesDirectory": ["./node_modules/tslint/lib/rules", "node_modules/tslint-no-unused-expression-chai/rules"],
+  "rules": {
+    "quotemark": [true, "double", "jsx-double", "avoid-escape"],
+    "variable-name": [true, "ban-keywords", "check-format", "allow-leading-underscore"],
+    "ordered-imports": true,
+    "no-unused-variable": false,
+    "no-extra-semi": true,
+    "ban": true,
+    "switch-default": true,
+    "triple-equals": true,
+    "prefer-const": true,
+    "return-undefined": false,
+
+    "array-bracket-spacing": [true, "never"],
+    "curly": false,
+    "space-before-function-paren": [true, "never"],
+
+    "no-unused-expression": false,
+    "no-unused-expression-chai": [true, "allow-fast-null-checks", "allow-tagged-template" ]
+  }
+}
