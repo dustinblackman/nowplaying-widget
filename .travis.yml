@@ -3,12 +3,16 @@ node_js:
   - "6"
 cache:
   yarn: true
-  # directories:
+  directories:
+    - node_modules
 before_install:
   - npm i -g yarn
 install:
+  - yarn global add codecov codeclimate-test-reporter
   - yarn install
 script:
   - yarn test
 after_success:
-  - ./node_modules/.bin/codecov
+  - ./node_modules/.bin/nyc report --reporter=text-lcov > coverage.lcov
+  - codecov
+  - codeclimate-test-reporter < coverage.lcov
