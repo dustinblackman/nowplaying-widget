@@ -6,7 +6,6 @@
 [![David](https://img.shields.io/david/dev/dustinblackman/nowplaying-widget.svg)](https://david-dm.org/dustinblackman/nowplaying-widget?type=dev)
 [![Travis](https://img.shields.io/travis/dustinblackman/nowplaying-widget/master.svg)](https://travis-ci.org/dustinblackman/nowplaying-widget/builds)
 [![Codecov](https://img.shields.io/codecov/c/github/dustinblackman/nowplaying-widget.svg)](https://codecov.io/gh/dustinblackman/nowplaying-widget)
-[![Code Climate](https://img.shields.io/codeclimate/github/dustinblackman/nowplaying-widget.svg)](https://codeclimate.com/github/dustinblackman/nowplaying-widget)
 [![Docker Hub](https://img.shields.io/docker/automated/dustinblackman/nowplaying-widget.svg)](https://hub.docker.com/r/dustinblackman/nowplaying-widget/)
 
 
