@@ -104,18 +104,18 @@ describe("Backend", () => {
       });
   });
 
-  // it("GET /api/playing/test", () => {
-    // return request
-      // .get("/api/playing/test")
-      // .then((res) => {
-        // expect(res.status).to.equal(200);
-        // expect(res.body).to.equal({
-          // id: "songid",
-          // song: "Song Name",
-          // album: "Album Name",
-          // album_art: "http://spotify.dev/image.jpg",
-          // artist: "Artist Name"
-        // });
-      // });
-  // });
+  it("GET /api/playing/test", () => {
+    return request
+      .get("/api/playing/test")
+      .then((res) => {
+        expect(res.status).to.equal(200);
+        expect(res.body).to.deep.equal({
+          id: "songid",
+          song: "Song Name",
+          album: "Album Name",
+          album_art: "http://spotify.dev/image.jpg",
+          artist: "Artist Name"
+        });
+      });
+  });
 });

@@ -15,7 +15,7 @@
     "dev": "concurrently -k 'npm run dev-server' 'npm run webpack-server'",
     "dev-server": "nodemon -x ./node_modules/.bin/ts-node -w ./server server/index.ts",
     "start": "NODE_ENV=production node ./dist/server/index.js",
-    "mocha": "mocha -r ts-node/register test/test.ts",
+    "mocha": "nyc mocha test/test.ts",
     "lint": "npm run lint:ts && npm run lint:scss",
     "lint:ts": "tslint --project tsconfig.json --type-check -t stylish '+(src|server|test|typings|webpack)/**/*.ts*'",
     "lint:scss": "stylelint src/**/*.scss",
@@ -40,6 +40,7 @@
     "@types/react-dom": "^15.5.1",
     "@types/react-hot-loader": "^3.0.3",
     "@types/react-redux": "^4.4.46",
+    "@types/source-map-support": "^0.4.0",
     "@types/stylelint": "^7.10.0",
     "@types/supertest": "^2.0.2",
     "@types/webpack": "^3.0.4",
@@ -58,6 +59,7 @@
     "babel-preset-react": "^6.23.0",
     "babel-preset-stage-0": "^6.24.1",
     "chai": "^4.1.0",
+    "codecov": "^2.2.0",
     "concurrently": "^3.5.0",
     "css-loader": "^0.28.0",
     "extract-text-webpack-plugin": "3.0.0",
@@ -65,8 +67,10 @@
     "mockery": "^2.1.0",
     "node-sass": "^4.5.3",
     "nodemon": "^1.11.0",
+    "nyc": "^11.1.0",
     "react-hot-loader": "^3.0.0-beta.6",
     "sass-loader": "^6.0.6",
+    "source-map-support": "^0.4.15",
     "style-loader": "^0.18.2",
     "stylelint": "^8.0.0",
     "stylelint-config-standard": "^17.0.0",
@@ -106,6 +110,24 @@
       "es2015-node6",
       "react"
     ]
+  },
+  "nyc": {
+    "extension": [
+      ".ts",
+      ".tsx"
+    ],
+    "instrument": true,
+    "include": [
+      "src/**/*.ts",
+      "src/**/*.tsx",
+      "server/**/*.ts",
+      "server/**/*.tsx"
+    ],
+    "require": [
+      "ts-node/register",
+      "source-map-support/register"
+    ],
+    "sourceMap": true
   },
   "stylelint": {
     "extends": "stylelint-config-standard"

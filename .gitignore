@@ -1,8 +1,10 @@
 *.log
 
 .env
+coverage/
 dist/
 scratch/
 node_modules/
+.nyc_output/
 **/local.js
 **/local.ts
