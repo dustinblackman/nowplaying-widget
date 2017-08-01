@@ -52,7 +52,8 @@ class SpotifyMock {
 
 let request: supertest.SuperTest<supertest.Test>;
 describe("Backend", () => {
-  before(() => {
+  before(function() {
+    this.timeout(10000);
     mockery.enable({warnOnReplace: false, warnOnUnregistered: false});
     mockery.registerMock("spotify-web-api-node", SpotifyMock);
     request = supertest(require("../server/server").app);
