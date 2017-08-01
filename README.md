@@ -2,6 +2,10 @@
 
 ![beartooth](http://i.imgur.com/nwb3squ.jpg)
 
+[![Travis](https://img.shields.io/travis/dustinblackman/nowplaying-widget/master.svg)](https://travis-ci.org/dustinblackman/nowplaying-widget/builds)
+[![Codecov](https://img.shields.io/codecov/c/github/dustinblackman/nowplaying-widget.svg)](https://codecov.io/gh/dustinblackman/nowplaying-widget)
+
+
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/dustinblackman/nowplaying-widget) [![Deploy to Docker Cloud](https://files.cloud.docker.com/images/deploy-to-dockercloud.svg)](https://cloud.docker.com/stack/deploy/?repo=https://github.com/dustinblackman/nowplaying-widget)
 
 A Spotify Now Playing widget that's accessible with anything that can render a webpage. Users automatically register and

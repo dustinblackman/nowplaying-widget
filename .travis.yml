@@ -4,6 +4,8 @@ node_js:
 cache:
   yarn: true
   # directories:
+before_install:
+  - npm i -g yarn
 install:
   - yarn install
 script:
