@@ -5,6 +5,7 @@ cache:
   yarn: true
   directories:
     - node_modules
+    - $(npm config get prefix)/lib/node_modules
 before_install:
   - npm i -g yarn
 install:
