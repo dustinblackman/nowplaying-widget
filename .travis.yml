@@ -8,11 +8,13 @@ cache:
 before_install:
   - npm i -g yarn
 install:
-  - yarn global add codecov codeclimate-test-reporter
+  - yarn global add codecov codeclimate-test-reporter codacy-coverage
   - yarn install
 script:
   - yarn test
 after_success:
+  # I can't decide which coverage service I like better... So lets use them all!
   - ./node_modules/.bin/nyc report --reporter=text-lcov > coverage.lcov
   - codecov
   - codeclimate-test-reporter < coverage.lcov
+  - cat ./coverage.lcov | codacy-coverage
