@@ -1,6 +1,8 @@
 language: node_js
 node_js:
   - "6"
+addons:
+  sauce_connect: true
 cache:
   yarn: true
   directories:
@@ -13,6 +15,7 @@ install:
   - yarn install
 script:
   - yarn test
+  - yarn build && NODE_ENV=production yarn nightwatch
 after_success:
   # I can't decide which coverage service I like better... So lets use them all!
   - ./node_modules/.bin/nyc report --reporter=text-lcov > coverage.lcov

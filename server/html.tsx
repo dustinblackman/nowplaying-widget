@@ -1,3 +1,4 @@
+import * as path from "path";
 import * as R from "ramda";
 import * as React from "react";
 import { renderToString } from "react-dom/server";
@@ -11,7 +12,7 @@ interface Assets {
 }
 
 function getAssets(fileExtension: string): string[] {
-  const assets = require("../assets.json");
+  const assets = require(path.join(__dirname, "../assets.json"));
   return R.pipe(
     R.values,
     R.pluck(fileExtension),
@@ -41,11 +42,11 @@ export default function renderApp() {
     jsAssets = R.flatten(vals);
   }
 
-  const scriptTags = jsAssets.map(filePath => {
-    return (<script src={filePath} />);
+  const scriptTags = jsAssets.map((filePath, idx) => {
+    return (<script key={idx} src={filePath} />);
   });
-  const styleTags = cssAssets.map(filePath => {
-    return (<link rel="stylesheet" type="text/css" href={filePath} />);
+  const styleTags = cssAssets.map((filePath, idx) => {
+    return (<link key={idx} rel="stylesheet" type="text/css" href={filePath} />);
   });
 
   return renderToString(

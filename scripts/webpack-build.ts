@@ -20,12 +20,12 @@ const vendor = [
 ];
 
 const babelQuery = {
-  "presets": [
+  presets: [
     "react",
-    ["es2015", { "modules": false }],
+    ["es2015", {modules: false }],
     "stage-0"
   ],
-  "plugins": [
+  plugins: [
     "transform-decorators-legacy"
   ]
 };
@@ -67,8 +67,8 @@ const config: webpack.Configuration = {
     new AssetsPlugin({path: path.join(build, ".."), filename: "assets.json"}),
     new webpack.NoEmitOnErrorsPlugin(),
     new webpack.DefinePlugin({
-      "__CLIENT__": true,
-      "__PRODUCTION__": true,
+      __CLIENT__: true,
+      __PRODUCTION__: true,
       "process.env.NODE_ENV": JSON.stringify("production")
     })
   ],
