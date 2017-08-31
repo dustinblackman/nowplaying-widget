@@ -16,6 +16,8 @@
     "array-bracket-spacing": [true, "never"],
     "curly": false,
     "space-before-function-paren": [true, "never"],
+    "object-literal-key-quotes": [true, "as-needed"],
+    "await-promise": [true, "Bluebird"],
 
     "no-unused-expression": false,
     "no-unused-expression-chai": [true, "allow-fast-null-checks", "allow-tagged-template" ]

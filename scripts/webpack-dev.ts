@@ -10,12 +10,12 @@ const port = nconf.get("PORT") + 1;
 const ip = "0.0.0.0";
 
 const babelQuery = {
-  "presets": [
+  presets: [
     "react",
-    ["es2015", { "modules": false }],
+    ["es2015", {modules: false }],
     "stage-0"
   ],
-  "plugins": [
+  plugins: [
     "transform-decorators-legacy",
     "react-hot-loader/babel"
   ]
@@ -43,8 +43,8 @@ const config: webpack.Configuration = {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
     new webpack.DefinePlugin({
-      "__CLIENT__": true,
-      "__PRODUCTION__": false,
+      __CLIENT__: true,
+      __PRODUCTION__: false,
       "process.env.NODE_ENV": JSON.stringify("development")
     })
   ],
