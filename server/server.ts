@@ -8,7 +8,7 @@ import * as Spotify from "spotify-web-api-node";
 
 import * as nconf from "./config";
 import renderHTML from "./html";
-import { ISpotifyCurrentSong } from "./interfaces";
+import {ISpotifyCurrentSong} from "./interfaces";
 
 interface ISpotifyInstances {
   [name: string]: Spotify.SpotifyInstance;
@@ -22,11 +22,10 @@ function setRefreshInterval(name: string, expiresIn: number) {
   console.log(`Refreshing token for ${name} in ${(expiresIn - 100) * 1000} milliseconds`);
   setTimeout(() => {
     console.log(`Refreshing token for ${name}`);
-    return spotifyInstances[name].refreshAccessToken()
-      .then((data) => {
-        spotifyInstances[name].setAccessToken(data.body.access_token);
-        setRefreshInterval(name, data.body.expires_in);
-      });
+    return spotifyInstances[name].refreshAccessToken().then(data => {
+      spotifyInstances[name].setAccessToken(data.body.access_token);
+      setRefreshInterval(name, data.body.expires_in);
+    });
   }, (expiresIn - 100) * 1000);
 }
 
@@ -51,18 +50,18 @@ app.get("/user/:name", (req, res) => {
 
 app.get("/authorize/callback", (req, res) => {
   const name = req.query.state;
-  if (!spotifyInstances[name]) return res.status(500).json({
-    msg: `${name} does not have an initialized spotify instance`
-  });
-
-  return spotifyInstances[name].authorizationCodeGrant(req.query.code)
-    .then((data) => {
-      spotifyInstances[name].setAccessToken(data.body.access_token);
-      spotifyInstances[name].setRefreshToken(data.body.refresh_token);
-      setRefreshInterval(name, data.body.expires_in);
-
-      res.redirect(`/user/${name}`);
+  if (!spotifyInstances[name])
+    return res.status(500).json({
+      msg: `${name} does not have an initialized spotify instance`
     });
+
+  return spotifyInstances[name].authorizationCodeGrant(req.query.code).then(data => {
+    spotifyInstances[name].setAccessToken(data.body.access_token);
+    spotifyInstances[name].setRefreshToken(data.body.refresh_token);
+    setRefreshInterval(name, data.body.expires_in);
+
+    res.redirect(`/user/${name}`);
+  });
 });
 
 app.get("/authorize/:name", (req, res) => {
@@ -79,19 +78,19 @@ app.get("/authorize/:name", (req, res) => {
 
 app.get("/api/playing/:name", (req, res) => {
   const name = req.params.name;
-  if (!spotifyInstances[name]) return res.status(500).json({
-    msg: `${name} does not have an initialized spotify instance`
-  });
-
-  return spotifyInstances[name].getMyCurrentlyPlaying()
-    .then((data) => {
-      const currentSong: ISpotifyCurrentSong = {
-        id: data.body.item.id,
-        song: data.body.item.name,
-        album: data.body.item.album.name,
-        album_art: data.body.item.album.images[0].url,
-        artist: R.pluck("name", data.body.item.artists).join(", ")
-      };
-      res.json(currentSong);
+  if (!spotifyInstances[name])
+    return res.status(500).json({
+      msg: `${name} does not have an initialized spotify instance`
     });
+
+  return spotifyInstances[name].getMyCurrentlyPlaying().then(data => {
+    const currentSong: ISpotifyCurrentSong = {
+      id: data.body.item.id,
+      song: data.body.item.name,
+      album: data.body.item.album.name,
+      album_art: data.body.item.album.images[0].url,
+      artist: R.pluck("name", data.body.item.artists).join(", ")
+    };
+    res.json(currentSong);
+  });
 });

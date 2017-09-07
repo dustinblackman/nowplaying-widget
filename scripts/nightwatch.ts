@@ -1,14 +1,14 @@
 import * as Bluebird from "bluebird";
-import { exec } from "child_process";
+import {exec} from "child_process";
 import * as express from "express";
 import * as fs from "fs";
 import * as mockery from "mockery";
-import { CliRunner as Nightwatch } from "nightwatch";
+import {CliRunner as Nightwatch} from "nightwatch";
 import * as path from "path";
 import * as R from "ramda";
 import * as selenium from "selenium-standalone";
 
-import { createSpotifyMock } from "../test/helpers/mocks";
+import {createSpotifyMock} from "../test/helpers/mocks";
 import * as saucelabs from "../test/helpers/saucelabs";
 
 const seleniumInstall = Bluebird.promisify(selenium.install);
@@ -38,8 +38,8 @@ const nightwatchConfig: Nightwatch.Settings = {
     server_path: path.join(__dirname, "../node_modules/selenium-standalone/.selenium/selenium-server/3.4.0-server.jar"),
     port: 4445,
     cli_args: {
-      "webdriver.gecko.driver" : path.join(__dirname, "../node_modules/selenium-standalone/.selenium/geckodriver/0.17.0-x64-geckodriver"),
-      "webdriver.chrome.driver" : path.join(__dirname, "../node_modules/selenium-standalone/.selenium/chromedriver/2.31-x64-chromedriver")
+      "webdriver.gecko.driver": path.join(__dirname, "../node_modules/selenium-standalone/.selenium/geckodriver/0.17.0-x64-geckodriver"),
+      "webdriver.chrome.driver": path.join(__dirname, "../node_modules/selenium-standalone/.selenium/chromedriver/2.31-x64-chromedriver")
     }
   },
   test_settings: {
@@ -142,19 +142,28 @@ async function runTests() {
   console.log("Listening on 7000");
   const server = app.listen(7000);
 
-  await Bluebird.map(R.keys(nightwatchConfig.test_settings), (testName: string) => {
-    if (!process.env.SAUCE_USERNAME) return runNightwatch(testName);
+  await Bluebird.map(
+    R.keys(nightwatchConfig.test_settings),
+    (testName: string) => {
+      if (!process.env.SAUCE_USERNAME) return runNightwatch(testName);
 
-    console.log(`Running ${testName}`);
-    // TODO: Show output from Nightwatch, even if it's messy.
-    return Bluebird.fromCallback(cb => exec(`ts-node ${__filename}`, {
-      env: R.merge(process.env, {NIGHTWATCH_TEST_NAME: testName})
-    }, cb))
-    .catch(err => {
-      console.log(`Test ${testName} failed`);
-      console.log(err);
-    });
-  }, {concurrency: 4});
+      console.log(`Running ${testName}`);
+      // TODO: Show output from Nightwatch, even if it's messy.
+      return Bluebird.fromCallback(cb =>
+        exec(
+          `ts-node ${__filename}`,
+          {
+            env: R.merge(process.env, {NIGHTWATCH_TEST_NAME: testName})
+          },
+          cb
+        )
+      ).catch(err => {
+        console.log(`Test ${testName} failed`);
+        console.log(err);
+      });
+    },
+    {concurrency: 4}
+  );
 
   server.close();
 }

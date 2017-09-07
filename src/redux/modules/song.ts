@@ -1,5 +1,5 @@
-import { ActionCreatorsMapObject } from "redux";
-import { ISpotifyCurrentSong } from "../../../server/interfaces";
+import {ActionCreatorsMapObject} from "redux";
+import {ISpotifyCurrentSong} from "../../../server/interfaces";
 
 const UPDATE_SONG = "song/update";
 

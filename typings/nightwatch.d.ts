@@ -8,7 +8,7 @@ declare namespace Nightwatch {
     silent?: boolean;
     desiredCapabilities: {
       browserName: string;
-      marionette?: boolean
+      marionette?: boolean;
       build?: string;
       platform?: string;
       "tunnel-identifier"?: string;
@@ -29,7 +29,7 @@ declare namespace Nightwatch {
       port: number;
       cli_args?: {
         [k: string]: string;
-      }
+      };
     };
     test_settings: {
       [k: string]: TestSettings;

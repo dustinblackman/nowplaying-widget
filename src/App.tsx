@@ -1,13 +1,13 @@
-import { default as axios } from "axios";
+import {default as axios} from "axios";
 import * as Promise from "bluebird";
 import * as R from "ramda";
 import * as React from "react";
 import FitText = require("react-fittext");
-import { connect } from "react-redux";
-import { bindActionCreators, Dispatch } from "redux";
+import {connect} from "react-redux";
+import {bindActionCreators, Dispatch} from "redux";
 
-import { ISpotifyCurrentSong } from "../server/interfaces";
-import { ISongMethods, songMethods } from "./redux/modules/song";
+import {ISpotifyCurrentSong} from "../server/interfaces";
+import {ISongMethods, songMethods} from "./redux/modules/song";
 
 import "./App.scss";
 
@@ -49,7 +49,7 @@ class NowPlaying extends React.Component<IProps, {}> {
     const coverStyle = {backgroundImage: `url("${song.album_art}")`};
 
     return (
-       <div>
+      <div>
         <div className="nowplaying">
           <div className="display">
             <div className="art" style={coverStyle} />
@@ -68,7 +68,4 @@ class NowPlaying extends React.Component<IProps, {}> {
   }
 }
 
-export default connect(
-  (state: IState) => ({song: state.song}),
-  (dispatch: Dispatch<{}>) => bindActionCreators(songMethods, dispatch)
-)(NowPlaying);
+export default connect((state: IState) => ({song: state.song}), (dispatch: Dispatch<{}>) => bindActionCreators(songMethods, dispatch))(NowPlaying);

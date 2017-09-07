@@ -10,27 +10,15 @@ const port = nconf.get("PORT") + 1;
 const ip = "0.0.0.0";
 
 const babelQuery = {
-  presets: [
-    "react",
-    ["es2015", {modules: false }],
-    "stage-0"
-  ],
-  plugins: [
-    "transform-decorators-legacy",
-    "react-hot-loader/babel"
-  ]
+  presets: ["react", ["es2015", {modules: false}], "stage-0"],
+  plugins: ["transform-decorators-legacy", "react-hot-loader/babel"]
 };
 
 const config: webpack.Configuration = {
   devtool: "eval",
   context: src,
   entry: {
-    app: [
-      "react-hot-loader/patch",
-      `webpack-dev-server/client?http://localhost:${port}`,
-      "webpack/hot/only-dev-server",
-      "./index.tsx"
-    ]
+    app: ["react-hot-loader/patch", `webpack-dev-server/client?http://localhost:${port}`, "webpack/hot/only-dev-server", "./index.tsx"]
   },
   output: {
     filename: "app.js",
@@ -89,28 +77,23 @@ const config: webpack.Configuration = {
       },
       {
         test: /\.scss$/,
-        use: [
-          {loader: "style-loader"},
-          {loader: "css-loader"},
-          {loader: "sass-loader"}
-        ]
+        use: [{loader: "style-loader"}, {loader: "css-loader"}, {loader: "sass-loader"}]
       }
     ]
   }
 };
 
 const devServerConfig = {
-  publicPath: config.output && config.output.publicPath || "",
+  publicPath: (config.output && config.output.publicPath) || "",
   // historyApiFallback: true,
   hot: true,
-  headers: { "Access-Control-Allow-Origin": "*" }
+  headers: {"Access-Control-Allow-Origin": "*"}
 };
 
-new WebpackDevServer(webpack(config), devServerConfig)
-  .listen(port, ip, (err: Error | null) => {
-    if (err) {
-      return console.log(err);
-    }
+new WebpackDevServer(webpack(config), devServerConfig).listen(port, ip, (err: Error | null) => {
+  if (err) {
+    return console.log(err);
+  }
 
-    console.log(`Webpack dev server listening on ${port}`);
-  });
+  console.log(`Webpack dev server listening on ${port}`);
+});

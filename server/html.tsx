@@ -1,7 +1,7 @@
 import * as path from "path";
 import * as R from "ramda";
 import * as React from "react";
-import { renderToString } from "react-dom/server";
+import {renderToString} from "react-dom/server";
 
 import * as nconf from "./config";
 
@@ -13,11 +13,7 @@ interface Assets {
 
 function getAssets(fileExtension: string): string[] {
   const assets = require(path.join(__dirname, "../assets.json"));
-  return R.pipe(
-    R.values,
-    R.pluck(fileExtension),
-    R.values
-  )(assets) as string[];
+  return R.pipe(R.values, R.pluck(fileExtension), R.values)(assets) as string[];
 }
 
 // TODO: Need to do proper serverside rendering.
@@ -43,10 +39,10 @@ export default function renderApp() {
   }
 
   const scriptTags = jsAssets.map((filePath, idx) => {
-    return (<script key={idx} src={filePath} />);
+    return <script key={idx} src={filePath} />;
   });
   const styleTags = cssAssets.map((filePath, idx) => {
-    return (<link key={idx} rel="stylesheet" type="text/css" href={filePath} />);
+    return <link key={idx} rel="stylesheet" type="text/css" href={filePath} />;
   });
 
   return renderToString(

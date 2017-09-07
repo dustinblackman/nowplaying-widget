@@ -1,5 +1,5 @@
 declare module "react-fittext" {
-  import { Component, ComponentState, ReactElement } from "react";
+  import {Component, ComponentState, ReactElement} from "react";
 
   interface ReactFitTextProps {
     children: React.ReactElement<any>;

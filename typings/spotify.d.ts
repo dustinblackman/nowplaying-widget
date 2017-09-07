@@ -4,7 +4,8 @@ declare module "spotify-web-api-node" {
 }
 
 declare namespace Spotify {
-  export interface Authorization { // TODO: Try removing all exports.
+  export interface Authorization {
+    // TODO: Try removing all exports.
     body: {
       access_token: string;
       refresh_token: string;
@@ -17,16 +18,20 @@ declare namespace Spotify {
       item: {
         id: string;
         name: string;
-        artists: [{
-          name: string;
-        }]
+        artists: [
+          {
+            name: string;
+          }
+        ];
         album: {
           name: string;
-          images: [{
-            url: string
-          }]
-        }
-      }
+          images: [
+            {
+              url: string;
+            }
+          ];
+        };
+      };
     };
   }
 

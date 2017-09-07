@@ -7,20 +7,20 @@ declare module "selenium-standalone" {
         version: string;
         arch: string;
         baseURL: string;
-      },
+      };
       ie?: {
         version: string;
         arch: string;
         baseURL: string;
-      },
+      };
       firefox?: {
         version: string;
         arch: string;
         baseURL: string;
-      },
+      };
       edge?: {
         version: string;
-      }
+      };
     };
   }
 

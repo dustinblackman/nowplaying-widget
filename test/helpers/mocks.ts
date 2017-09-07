@@ -40,13 +40,17 @@ export function createSpotifyMock(params: SpotifyMockParams) {
             name: "Aggressive",
             album: {
               name: "Aggressive",
-              images: [{
-                url: "https://i.scdn.co/image/c4e0640d661385b44dd6c90642d94e456bf4a54e"
-              }]
+              images: [
+                {
+                  url: "https://i.scdn.co/image/c4e0640d661385b44dd6c90642d94e456bf4a54e"
+                }
+              ]
             },
-            artists: [{
-              name: "Beartooth"
-            }]
+            artists: [
+              {
+                name: "Beartooth"
+              }
+            ]
           }
         }
       });

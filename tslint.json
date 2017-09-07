@@ -1,8 +1,7 @@
 {
-  "extends": ["tslint-config-semistandard", "tslint-react"],
-  "rulesDirectory": ["./node_modules/tslint/lib/rules", "node_modules/tslint-no-unused-expression-chai/rules"],
+  "extends": ["tslint-config-semistandard", "tslint-react", "tslint-config-prettier"],
+  "rulesDirectory": ["./node_modules/tslint/lib/rules", "node_modules/tslint-no-unused-expression-chai/rules", "node_modules/tslint-plugin-prettier/rules"],
   "rules": {
-    "quotemark": [true, "double", "jsx-double", "avoid-escape"],
     "variable-name": [true, "ban-keywords", "check-format", "allow-leading-underscore"],
     "ordered-imports": true,
     "no-unused-variable": false,
@@ -13,13 +12,11 @@
     "prefer-const": true,
     "return-undefined": false,
 
-    "array-bracket-spacing": [true, "never"],
     "curly": false,
-    "space-before-function-paren": [true, "never"],
-    "object-literal-key-quotes": [true, "as-needed"],
     "await-promise": [true, "Bluebird"],
 
     "no-unused-expression": false,
-    "no-unused-expression-chai": [true, "allow-fast-null-checks", "allow-tagged-template" ]
+    "no-unused-expression-chai": [true, "allow-fast-null-checks", "allow-tagged-template" ],
+    "prettier": [true, {"printWidth": 200, "bracketSpacing": false}]
   }
 }

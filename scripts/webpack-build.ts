@@ -8,34 +8,17 @@ import * as UglifyJSPlugin from "uglifyjs-webpack-plugin";
 const root = process.cwd();
 const build = path.join(root, "dist/static");
 // TODO: look for a way to automate this.
-const vendor = [
-  "axios",
-  "bluebird",
-  "ramda",
-  "react",
-  "react-dom",
-  "react-redux",
-  "react-fittext",
-  "redux"
-];
+const vendor = ["axios", "bluebird", "ramda", "react", "react-dom", "react-redux", "react-fittext", "redux"];
 
 const babelQuery = {
-  presets: [
-    "react",
-    ["es2015", {modules: false }],
-    "stage-0"
-  ],
-  plugins: [
-    "transform-decorators-legacy"
-  ]
+  presets: ["react", ["es2015", {modules: false}], "stage-0"],
+  plugins: ["transform-decorators-legacy"]
 };
 
 const config: webpack.Configuration = {
   context: root,
   entry: {
-    app: [
-      "./src/index.tsx"
-    ],
+    app: ["./src/index.tsx"],
     vendor
   },
   output: {
@@ -90,10 +73,7 @@ const config: webpack.Configuration = {
       },
       {
         test: /\.tsx?$/,
-        use: [
-          {loader: "babel-loader", query: babelQuery},
-          {loader: "ts-loader"}
-        ]
+        use: [{loader: "babel-loader", query: babelQuery}, {loader: "ts-loader"}]
       },
       {
         test: /\.jsx?$/,
